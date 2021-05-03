@@ -1,0 +1,19 @@
+{
+  "name": "shopify-backend-intern-challenge",
+  "version": "1.0.0",
+  "description": "https://docs.google.com/document/d/1ZKRywXQLZWOqVOHC4JkF3LqdpO3Llpfk_CkZPR8bjak/edit#heading=h.n7bww7g70ipk",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinGe00/shopify-backend-intern-challenge.git"
+  },
+  "author": "Kevin Ge",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinGe00/shopify-backend-intern-challenge/issues"
+  },
+  "homepage": "https://github.com/KevinGe00/shopify-backend-intern-challenge#readme"
+}
