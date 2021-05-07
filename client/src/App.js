@@ -1,9 +1,11 @@
 import './App.css';
+import ImageUploadForm from "./components/ImageUploadForm";
+
 
 function App() {
   return (
     <div className="App">
-      test
+      <ImageUploadForm/>
     </div>
   );
 }
