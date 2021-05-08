@@ -17,14 +17,30 @@ function ImageUploadForm({
     formData.append('desc', desc);
     formData.append('img', file);
 
-    axios.post('http://localhost:5000/api/upload', formData)
-      .then(res => {
-        alert("Upload success");
-        getAllStoredImages();
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    // Getting dimensions of uploaded image
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = (e) => {
+        const img = new Image();
+        img.src = e.target.result;
+        img.onload = () => {
+          formData.append("width", img.naturalWidth);
+          formData.append("height", img.naturalHeight);
+
+          // Formdata complete
+          axios.post('http://localhost:5000/api/upload', formData)
+            .then(res => {
+              alert("Upload success");
+              getAllStoredImages();
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }
+      }
+    }
+
   }
 
   return (

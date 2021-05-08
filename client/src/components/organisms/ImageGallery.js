@@ -1,21 +1,27 @@
 import React from "react";
+import Gallery from "react-photo-gallery";
 import "./css/ImageGallery.css";
 
 function ImageGallery({
     imageList = []
 }) {
+
+    // Convert image list to form used by react-photo-gallery
+    const convertToGalleryList = (imageList) => {
+        return imageList.map(image => {
+            const b64 = Buffer.from(image.img.data).toString('base64');
+
+            return ({
+                src: `data:${image.img.contentType};base64,${b64}`,
+                width: image.width,
+                height: image.height
+            })
+        })
+    }
+
     return (
         <div className="image-gallery">
-
-            {imageList.map((image, index) => {
-                const b64 = Buffer.from(image.img.data).toString('base64');
-                return (<>
-                    <h1>{image.name}</h1>
-                    <p>{image.desc}</p>
-                    <img key={index} src={`data:${image.img.contentType};base64,${b64}`}></img>
-                </>)
-            })}
-
+            <Gallery photos={convertToGalleryList(imageList)} />
         </div>
     );
 }
