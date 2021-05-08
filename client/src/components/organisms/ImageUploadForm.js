@@ -10,6 +10,17 @@ function ImageUploadForm({
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
 
+  const uploadImage = (formData) => {
+    axios.post('http://localhost:5000/api/upload', formData)
+      .then(res => {
+        alert("Upload success");
+        getAllStoredImages();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     var formData = new FormData();
@@ -21,6 +32,7 @@ function ImageUploadForm({
     if (file) {
       const reader = new FileReader();
       reader.readAsDataURL(file);
+
       reader.onload = (e) => {
         const img = new Image();
         img.src = e.target.result;
@@ -29,18 +41,10 @@ function ImageUploadForm({
           formData.append("height", img.naturalHeight);
 
           // Formdata complete
-          axios.post('http://localhost:5000/api/upload', formData)
-            .then(res => {
-              alert("Upload success");
-              getAllStoredImages();
-            })
-            .catch(err => {
-              console.log(err);
-            });
+          uploadImage(formData);
         }
       }
     }
-
   }
 
   return (
@@ -73,8 +77,6 @@ function ImageUploadForm({
 
         <button type="submit">Submit</button>
       </form>
-
-
     </div>
   );
 }
