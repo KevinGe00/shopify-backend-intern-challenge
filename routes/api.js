@@ -20,6 +20,20 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
+//
+router.get('/all', (req, res) => {
+    imageModel.find({}, (err, images) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('An error occurred', err);
+        }
+        else {
+            console.log(images);
+            res.status(200).send(images);
+        }
+    });
+});
+
 // Upload photos sent by users to mongodb database
 router.post('/upload', upload.single('img'), (req, res) => {
 
