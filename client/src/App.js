@@ -1,11 +1,13 @@
 import './App.css';
-import ImageUploadForm from "./components/ImageUploadForm";
+import MainPage from "./components/pages/MainPage";
 
 
 function App() {
+
+
   return (
     <div className="App">
-      <ImageUploadForm/>
+      <MainPage />
     </div>
   );
 }
