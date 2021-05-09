@@ -44,7 +44,7 @@ npm start
 ## Testing
 Integration tests with my image CRUD api is done in a separate node environment and uses a test specific database.
 
-To start test, run this in the root directory:
+To start the tests, run this in the root directory:
 ```
 npm test
 ```
