@@ -26,13 +26,14 @@ function ImageUploadForm({
     formData.append("height", height);
     formData.append('img', file);
 
-    axios.post('http://localhost:5000/api/upload', formData)
-      .then(res => {
-        alert("Upload success. Image added to gallery.");
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    console.log(file)
+    // axios.post('http://localhost:5000/api/upload', formData)
+    //   .then(res => {
+    //     alert("Upload success. Image added to gallery.");
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
   }
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -84,7 +85,7 @@ function ImageUploadForm({
 
   return (
     <div className="image-upload-form container">
-      <form id="contact">
+      <div id="contact">
         <h2>File Upload</h2>
         <fieldset>
           <input
@@ -134,7 +135,7 @@ function ImageUploadForm({
         >
           Submit
         </button>
-      </form>
+      </div>
     </div>
   )
 }

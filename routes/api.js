@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
-//
+// Get all stored photos in cluster
 router.get('/all', (req, res) => {
     imageModel.find({}, (err, images) => {
         if (err) {
