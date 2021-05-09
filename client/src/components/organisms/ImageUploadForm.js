@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useMemo } from 'react'
-import { useDropzone } from 'react-dropzone'
 import axios from 'axios';
+import { useDropzone } from 'react-dropzone'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUpload } from '@fortawesome/free-solid-svg-icons'
 import './css/ImageUploadForm.css';
 import { baseStyle, activeStyle, acceptStyle, rejectStyle } from './css/ImageUploadFormStyling';
 
@@ -74,13 +76,13 @@ function ImageUploadForm({
     <div className="image-upload-form">
       <h2>File Upload</h2>
       <div {...getRootProps({ style })} className='dropzone-div'>
+        <FontAwesomeIcon icon={faUpload} size='3x' />
         <input {...getInputProps()} />
         {
           isDragActive ?
             <p>Drop the files here ...</p> :
             <p>Drag and drop an image here, or click to select images</p>
         }
-
         <em>(Only *.jpg, *.jpeg and *.png files will be accepted)</em>
       </div>
     </div>

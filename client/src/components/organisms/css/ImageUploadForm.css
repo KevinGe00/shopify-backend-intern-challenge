@@ -2,21 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 5% 0;
-
+  margin-bottom: 10%;
+  color: white;
 }
 
 .dropzone-div {
   width: 70%;
 }
-/* .dropzone-div {
-    display: flex;
-    flex-direction: column;
-    align-content: space-around;
-    width: 30%;
-    border: 1px solid black;
-    justify-content: center;
-    margin: 5% 0;
-    left: 50%;
-    right: 50%;
-} */
+
+.upload-icon {
+  font-size: large;
+}

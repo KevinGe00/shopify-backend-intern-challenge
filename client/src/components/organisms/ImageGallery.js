@@ -21,6 +21,7 @@ function ImageGallery({
 
     return (
         <div className="image-gallery">
+            <h1>Image Repository</h1>
             <Gallery photos={convertToGalleryList(imageList)} />
         </div>
     );
