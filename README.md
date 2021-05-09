@@ -10,10 +10,10 @@ This is a project I built as a challenge submission for Shopify's Backend Develo
 
 ## Stack
 
- - **Frontend**
+- **Frontend**
        React
        HTML/CSS
- - **Backend**
+- **Backend**
        Node/Express
 - **Database**
        MongoDB
