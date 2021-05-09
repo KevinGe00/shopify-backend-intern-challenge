@@ -102,7 +102,7 @@ function ImageUploadForm({
           <input
             placeholder="Image description"
             type="text"
-            tabI ndex="2"
+            tabIndex="2"
             value={desc}
             onChange={e => setDesc(e.target.value)}
             required
