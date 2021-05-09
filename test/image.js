@@ -36,8 +36,7 @@ describe('Images', () => {
    * Test the /POST route
    */
     describe('/POST an image', () => {
-        it('it should not POST an image without width field', (done) => {
-
+        it('it should not POST an image without the width field', (done) => {
             chai.request(server)
                 .post('/api/upload')
                 .field("name", "smiley")
@@ -51,7 +50,7 @@ describe('Images', () => {
                     done();
                 });
         });
-        it('it should POST an image with no errors ', (done) => {
+        it('it should POST an image with no errors if all required fields are correctly populated', (done) => {
             chai.request(server)
                 .post('/api/upload')
                 .field("name", "smiley")

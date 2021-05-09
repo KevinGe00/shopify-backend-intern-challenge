@@ -26,14 +26,14 @@ function ImageUploadForm({
     formData.append("height", height);
     formData.append('img', file);
 
-    console.log(file)
-    // axios.post('http://localhost:5000/api/upload', formData)
-    //   .then(res => {
-    //     alert("Upload success. Image added to gallery.");
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    axios.post('/api/upload', formData)
+      .then(res => {
+        alert("Upload success. Image added to gallery.");
+        getAllStoredImages();
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   const onDrop = useCallback((acceptedFiles) => {

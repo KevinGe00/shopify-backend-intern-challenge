@@ -14,7 +14,7 @@ function MainPage({
     const [searchKeyword, setSearchKeyword] = useState('');
 
     const getAllStoredImages = () => {
-        axios.get('http://localhost:5000/api/all')
+        axios.get('/api/all')
             .then(res => {
                 if (res.data) {
                     setImageListAll(res.data);
