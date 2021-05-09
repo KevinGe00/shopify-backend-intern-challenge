@@ -29,7 +29,6 @@ function ImageUploadForm({
     axios.post('http://localhost:5000/api/upload', formData)
       .then(res => {
         alert("Upload success. Image added to gallery.");
-        getAllStoredImages();
       })
       .catch(err => {
         console.log(err);
@@ -91,20 +90,22 @@ function ImageUploadForm({
           <input
             placeholder="Image name"
             type="text"
-            tabindex="1"
+            tabIndex="1"
             value={name}
             onChange={e => setName(e.target.value)}
             required
-            autofocus />
+            autoFocus />
         </fieldset>
 
         <fieldset>
           <input
             placeholder="Image description"
             type="text"
-            tabindex="2"
+            tabI ndex="2"
             value={desc}
             onChange={e => setDesc(e.target.value)}
+            required
+            autoFocus
           />
         </fieldset>
 
