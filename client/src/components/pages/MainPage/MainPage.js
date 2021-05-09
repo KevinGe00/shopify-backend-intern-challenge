@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import './css/MainPage.css';
-import ImageUploadForm from '../organisms/ImageUploadForm';
-import ImageGallery from '../organisms/ImageGallery';
+import './MainPage.css';
+import ImageUploadForm from '../../organisms/ImageUploadForm/ImageUploadForm';
+import ImageGallery from '../../organisms/ImageGallery/ImageGallery';
 
 
 function MainPage({

@@ -3,8 +3,8 @@ import axios from 'axios';
 import { useDropzone } from 'react-dropzone'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
-import './css/ImageUploadForm.css';
-import { baseStyle, activeStyle, acceptStyle, rejectStyle } from './css/ImageUploadFormStyling';
+import './ImageUploadForm.css';
+import { baseStyle, activeStyle, acceptStyle, rejectStyle } from './ImageUploadFormStyling';
 
 function ImageUploadForm({
   imageList = [],
