@@ -8,9 +8,9 @@ export const baseStyle = {
     padding: '20px',
     borderWidth: 2,
     borderRadius: 2,
-    borderColor: '#eeeeee',
+    borderColor: '#BEBEBE',
     borderStyle: 'dashed',
-    backgroundColor: '#fafafa',
+    backgroundColor: 'white',
     color: '#919191',
     outline: 'none',
     transition: 'border .24s ease-in-out'

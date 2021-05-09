@@ -13,8 +13,19 @@ function ImageUploadForm({
 
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
+  const [width, setWidth] = useState(null);
+  const [height, setHeight] = useState(null);
+  const [file, setFile] = useState(null);
 
-  const uploadImage = (formData) => {
+  const handleSubmit = (e) => {
+    // Create payload to be sent to server
+    var formData = new FormData();
+    formData.append('name', name);
+    formData.append('desc', desc);
+    formData.append("width", width);
+    formData.append("height", height);
+    formData.append('img', file);
+
     axios.post('http://localhost:5000/api/upload', formData)
       .then(res => {
         alert("Upload success. Image added to gallery.");
@@ -27,39 +38,33 @@ function ImageUploadForm({
 
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.forEach((file) => {
-      // Create payload to be sent to server
-      var formData = new FormData();
-      formData.append('name', name);
-      formData.append('desc', desc);
-      formData.append('img', file);
+      setFile(file)
 
       const reader = new FileReader()
       reader.onabort = () => console.log('file reading was aborted')
       reader.onerror = () => console.log('file reading has failed')
 
-      reader.readAsDataURL(file);
       reader.onload = (e) => {
         const img = new Image();
         img.src = e.target.result;
         img.onload = () => {
           // Image is opened and processed here
-          formData.append("width", img.naturalWidth);
-          formData.append("height", img.naturalHeight);
-
-          // Formdata complete
-          uploadImage(formData);
+          setWidth(img.naturalWidth);
+          setHeight(img.naturalHeight);
         }
       }
+      reader.readAsDataURL(file);
     })
   }, [])
 
   const {
+    acceptedFiles,
     getRootProps,
     getInputProps,
     isDragActive,
     isDragAccept,
     isDragReject
-  } = useDropzone({ onDrop, accept: 'image/*' })
+  } = useDropzone({ onDrop, accept: 'image/*', maxFiles: 1 })
 
   const style = useMemo(() => ({
     ...baseStyle,
@@ -72,19 +77,63 @@ function ImageUploadForm({
     isDragAccept
   ]);
 
+  const files = acceptedFiles.map(file => (
+    <p key={file.path}>
+      {file.path} - {Math.round(file.size / 1000)} kb
+    </p>
+  ));
+
   return (
-    <div className="image-upload-form">
-      <h2>File Upload</h2>
-      <div {...getRootProps({ style })} className='dropzone-div'>
-        <FontAwesomeIcon icon={faUpload} size='3x' />
-        <input {...getInputProps()} />
-        {
-          isDragActive ?
-            <p>Drop the files here ...</p> :
-            <p>Drag and drop an image here, or click to select images</p>
-        }
-        <em>(Only *.jpg, *.jpeg and *.png files will be accepted)</em>
-      </div>
+    <div className="image-upload-form container">
+      <form id="contact">
+        <h2>File Upload</h2>
+        <fieldset>
+          <input
+            placeholder="Image name"
+            type="text"
+            tabindex="1"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
+            autofocus />
+        </fieldset>
+
+        <fieldset>
+          <input
+            placeholder="Image description"
+            type="text"
+            tabindex="2"
+            value={desc}
+            onChange={e => setDesc(e.target.value)}
+          />
+        </fieldset>
+
+        <div {...getRootProps({ style })} className='dropzone-div'>
+          <FontAwesomeIcon icon={faUpload} size='3x' />
+          <input {...getInputProps()} />
+          {
+            isDragActive ?
+              <p>Drop the files here ...</p> :
+              <p>Drag and drop an image here, or click to select images</p>
+          }
+          <em>(Only *.jpg, *.jpeg and *.png files will be accepted)</em>
+        </div>
+
+        <aside>
+          <h4>Uploaded File:</h4>
+          {file ?
+            files :
+            "None"
+          }
+        </aside>
+
+        <button
+          id="contact-submit"
+          onClick={handleSubmit}
+        >
+          Submit
+        </button>
+      </form>
     </div>
   )
 }
