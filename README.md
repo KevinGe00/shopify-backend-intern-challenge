@@ -10,19 +10,19 @@ This is a project I built as a challenge submission for Shopify's Backend Develo
 
 ## Stack
 
-- **Frontend**
-       React
-       HTML/CSS
-- **Backend**
-       Node/Express
+ - **Frontend**
+   - React
+   - HTML/CSS
+ - **Backend**
+	  - Node/Express
 - **Database**
-       MongoDB
+   - MongoDB
 - **Testing**  
-       Mocha
-       Chai
+   - Mocha
+   -  Chai
 - **Important dependencies/libraries**  
-       mongoose (for schemas and models)
-       multer (middleware for storing image uploads)
+   - mongoose (for schemas and models)
+   - multer (middleware for storing image uploads)
     
 
 ## Installation/Run
