@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose')
 const routes = require('./routes/api');
+const path = require("path")
 require('dotenv').config();
 
 const app = express();
@@ -31,10 +32,16 @@ mongoose.connect(
   }
 );
 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
 // Support parsing of application/json type post data
 app.use(bodyParser.json());
 
 app.use('/api', routes);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
