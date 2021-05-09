@@ -28,7 +28,8 @@ function ImageGallery({
             return ({
                 src: `data:${image.img.contentType};base64,${b64}`,
                 width: image.width,
-                height: image.height
+                height: image.height,
+                title: image.name + ": " + image.desc
             })
         })
     }
@@ -45,7 +46,8 @@ function ImageGallery({
                             views={convertToGalleryList(imageList).map(x => ({
                                 ...x,
                                 srcset: x.srcSet,
-                                caption: x.title
+                                caption: x.title,
+                                alt: x.title
                             }))}
                         />
                     </Modal>
