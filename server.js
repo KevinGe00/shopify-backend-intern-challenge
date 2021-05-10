@@ -32,7 +32,7 @@ mongoose.connect(
   }
 );
 
-app.use(express.static('client / build'))
+app.use(express.static('client/build'))
 
 // Support parsing of application/json type post data
 app.use(bodyParser.json());
