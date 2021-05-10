@@ -17,8 +17,6 @@ function ImageUploadForm({
   const [height, setHeight] = useState(null);
   const [file, setFile] = useState(null);
 
-  const baseUrl = process.env.baseURL || "http://localhost:5000"
-
   const handleSubmit = (e) => {
     // Create payload to be sent to server
     var formData = new FormData();
@@ -28,7 +26,7 @@ function ImageUploadForm({
     formData.append("height", height);
     formData.append('img', file);
 
-    axios.post(`${baseUrl}/api/upload`, formData)
+    axios.post('/api/upload', formData)
       .then(res => {
         alert("Upload success. Image added to gallery.");
         getAllStoredImages();
@@ -118,7 +116,7 @@ function ImageUploadForm({
           {
             isDragActive ?
               <p>Drop the files here ...</p> :
-              <p>Drag and drop an image here, or click to select images</p>
+              <p>Drag and drop an image here, or click to select an image</p>
           }
           <em>(Only *.jpg, *.jpeg and *.png files will be accepted)</em>
         </div>
