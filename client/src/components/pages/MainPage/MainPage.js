@@ -13,8 +13,10 @@ function MainPage({
     const [imageList, setImageList] = useState([]); // List of images to display based on user search
     const [searchKeyword, setSearchKeyword] = useState('');
 
+    const baseUrl = process.env.baseURL || "http://localhost:5000"
+
     const getAllStoredImages = () => {
-        axios.get('/api/all')
+        axios.get(`${baseUrl}/api/all`)
             .then(res => {
                 if (res.data) {
                     setImageListAll(res.data);

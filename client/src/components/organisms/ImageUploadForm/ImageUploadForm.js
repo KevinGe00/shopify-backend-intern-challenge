@@ -17,6 +17,8 @@ function ImageUploadForm({
   const [height, setHeight] = useState(null);
   const [file, setFile] = useState(null);
 
+  const baseUrl = process.env.baseURL || "http://localhost:5000"
+
   const handleSubmit = (e) => {
     // Create payload to be sent to server
     var formData = new FormData();
@@ -26,7 +28,7 @@ function ImageUploadForm({
     formData.append("height", height);
     formData.append('img', file);
 
-    axios.post('/api/upload', formData)
+    axios.post(`${baseUrl}/api/upload`, formData)
       .then(res => {
         alert("Upload success. Image added to gallery.");
         getAllStoredImages();
