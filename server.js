@@ -16,18 +16,17 @@ app.use((req, res, next) => {
 });
 
 // Connecting to database
-// var DB_URI;
-// if (process.env.NODE_ENV == 'test') {
-//   // Connect to database specifically for test under test env
-//   DB_URI = process.env.MONGODB_URL_TEST
-//   console.log('IN TEST ENV')
-// } else {
-//   DB_URI = process.env.MONGODB_URL
-//   console.log(DB_URI)
-// }
+var DB_URI;
+if (process.env.NODE_ENV == 'test') {
+  // Connect to database specifically for test under test env
+  DB_URI = process.env.MONGODB_URL_TEST
+  console.log('IN TEST ENV')
+} else {
+  DB_URI = process.env.MONGODB_URL
+}
 
 mongoose.connect(
-  process.env.MONGODB_URL || "mongodb://localhost:27017/images",
+  DB_URI || "mongodb://localhost:27017/images",
   { useNewUrlParser: true, useUnifiedTopology: true }, err => {
     console.log('Successfully connected to database')
   }
